@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>YMN-PACK-TOOL</title>
+  <script src="lib/vue.js"></script>
+  <script src="lib/firebase.js"></script>
+  <style src="css/vueapp.css"></style>
+</head>
+<body>
+<div id="app">
+  <ul>
+    <li class="user" v-for="user in users" transition>
+      <span>{{user.name}} - {{user.email}}</span>
+      <button v-on:click="removeUser(user)">X</button>
+    </li>
+  </ul>
+  <form id="form" v-on:submit.prevent="addUser">
+    <input v-model="newUser.name">
+    <input v-model="newUser.email">
+    <input type="submit" value="Add User">
+  </form>
+  <ul class="errors">
+    <li v-show="!validation.name">Name cannot be empty.</li>
+    <li v-show="!validation.email">Please provide a valid email address.</li>
+  </ul>
+</div>
+<!-- JavaScript 代码需要放在尾部（指定的HTML元素之后） -->
+<script src="script/vueapp.js"></script>
+</body>
+</html>
